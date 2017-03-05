@@ -78,7 +78,6 @@ var aBayes = function(){
 
         variants.appendChild(newVariant);
     };
-     
     function clearResults(){
         /* expected naming in HTML is 
          * p# is the cell for probability
