@@ -27,6 +27,57 @@ var aBayes = function(){
     //could add code to collect an infromative prior from the form if it is felt to be available   
     ,default_POINTS_TO_PLOT = 2000
     ,default_SAMPLES_FOR_COMPARE = 5000;
+
+    function addVersion() {
+        var variants=document.getElementById('variants');
+        var newVariant=document.createElement('tr');
+
+        //Заголовок
+        var th=document.createElement('th');
+        th.setAttribute('id','l'+numRows);
+        newVariant.appendChild(th);
+
+        //Чекбокс
+        var td1=document.createElement('td');
+        var input1=document.createElement('input');
+        input1.setAttribute('type','checkbox');
+        input1.setAttribute('name','i'+numRows);
+        td1.appendChild(input1);
+        newVariant.appendChild(td1);
+
+        //Число 1
+        var td2=document.createElement('td');
+        var input2=document.createElement('input');
+        input2.setAttribute('type','text');
+        input2.setAttribute('name','n'+numRows);
+        input2.setAttribute('class','input-mini');
+        input2.setAttribute('value','0');
+        td2.appendChild(input2);
+        newVariant.appendChild(td2);
+
+        //Число 2
+        var td3=document.createElement('td');
+        var input3=document.createElement('input');
+        input3.setAttribute('type','text');
+        input3.setAttribute('name','s'+numRows);
+        input3.setAttribute('class','input-mini');
+        input3.setAttribute('value','0');
+        td3.appendChild(input3);
+        newVariant.appendChild(td3);
+
+        var td4=document.createElement('td');
+        td4.setAttribute('id','p'+numRows);
+        newVariant.appendChild(td4);
+
+        var td5=document.createElement('td');
+        td5.setAttribute('id','r'+numRows);
+        newVariant.appendChild(td5);
+
+
+        th.innerText=++numRows;
+
+        variants.appendChild(newVariant);
+    };
      
     function clearResults(){
         /* expected naming in HTML is 
@@ -292,12 +343,12 @@ var aBayes = function(){
         var chart = new google.visualization.AreaChart(document.getElementById('plot'));
         chart.draw(data, options);
     };
-        
-            
+
     return {
         plotGraph:plotGraph,
         plotButton:plotButton,
-        zoomButton:zoomButton
+        zoomButton:zoomButton,
+        addVersion:addVersion
     };
     
     
